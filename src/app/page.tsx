@@ -1,65 +1,99 @@
-import Image from "next/image";
+'use client';
+
+import * as React from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { TasksSection } from "@/components/TasksSection";
+import { ShopSection } from "@/components/ShopSection";
 
 export default function Home() {
+  const [buildingLevels, setBuildingLevels] = useLocalStorage<Record<string, number>>("buildingLevels", {});
+  const [cartItems, setCartItems] = useLocalStorage<Record<string, number>>("cartItems", {});
+  const [totalEarned, setTotalEarned] = React.useState(0);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-amber-600 font-mono animate-pulse uppercase tracking-[0.2em]">Initializing System...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-amber-500/30">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-20">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-amber-500 rounded flex items-center justify-center font-bold text-white">DW</div>
+            <h1 className="text-xl font-black uppercase tracking-tighter text-slate-900">
+              Rebate <span className="text-amber-600">Calculator</span>
+            </h1>
+          </div>
+          <div className="hidden sm:flex items-center gap-6 font-mono text-sm">
+            <div className="flex flex-col items-end">
+              <span className="text-[10px] text-slate-400 leading-none font-bold">SYSTEM STATUS</span>
+              <span className="text-green-600 font-bold">OPERATIONAL</span>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </header>
+
+      <main className="container mx-auto px-4 py-8">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          {/* Tasks Section (Left/Top) */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="flex items-center justify-between border-l-4 border-amber-500 pl-4 py-1">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900">Building Progress</h2>
+              <button 
+                onClick={() => setBuildingLevels({})}
+                className="text-[10px] text-slate-400 hover:text-red-500 transition-colors uppercase font-bold tracking-widest"
+              >
+                Reset Progress
+              </button>
+            </div>
+            <TasksSection 
+              levels={buildingLevels} 
+              setLevels={setBuildingLevels} 
+              onTotalEarnedChange={setTotalEarned}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          {/* Shop Section (Right/Bottom) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4 py-1">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900">Exchange Shop</h2>
+              <button 
+                onClick={() => setCartItems({})}
+                className="text-[10px] text-slate-400 hover:text-red-500 transition-colors uppercase font-bold tracking-widest"
+              >
+                Clear Cart
+              </button>
+            </div>
+            <ShopSection 
+              totalEarned={totalEarned}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              onTotalSpentChange={() => {}}
+            />
+          </div>
         </div>
       </main>
+
+      <footer className="border-t border-slate-200 bg-white py-12">
+        <div className="container mx-auto px-4 text-center space-y-4">
+          <div className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-bold">
+            Season Building Rebates Protocol
+          </div>
+          <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
+            Data values are based on the latest game event specifications. 
+            Accumulative rewards are automatically calculated per tier level.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

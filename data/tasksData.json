@@ -1,0 +1,55 @@
+[
+  {
+    "category": "Thermal Lab",
+    "tiers": ["I"], 
+    "milestones": [
+      { "level": 10, "reward": 500 },
+      { "level": 15, "reward": 500 },
+      { "level": 20, "reward": 1000 }
+    ]
+  },
+  {
+    "category": "Smart Greenhouse",
+    "tiers": ["I", "II", "III", "IV", "V"],
+    "milestones": [
+      { "level": 15, "reward": 500 },
+      { "level": 20, "reward": 500 },
+      { "level": 24, "reward": 800 },
+      { "level": 28, "reward": 1000 },
+      { "level": 30, "reward": 1000 }
+    ]
+  },
+  {
+    "category": "Strategic Barrack",
+    "tiers": ["I"],
+    "milestones": [
+      { "level": 15, "reward": 1000 },
+      { "level": 20, "reward": 1000 },
+      { "level": 24, "reward": 1500 },
+      { "level": 28, "reward": 1500 },
+      { "level": 30, "reward": 2000 }
+    ]
+  },
+  {
+    "category": "Armed Turret",
+    "tiers": ["I", "II"],
+    "milestones": [
+      { "level": 15, "reward": 1000 },
+      { "level": 20, "reward": 1000 },
+      { "level": 24, "reward": 1500 },
+      { "level": 28, "reward": 1500 },
+      { "level": 30, "reward": 2000 }
+    ]
+  },
+  {
+    "category": "Defensive Base",
+    "tiers": ["I", "II"],
+    "milestones": [
+      { "level": 15, "reward": 1000 },
+      { "level": 20, "reward": 1000 },
+      { "level": 24, "reward": 1500 },
+      { "level": 28, "reward": 1500 },
+      { "level": 30, "reward": 2000 }
+    ]
+  }
+]
