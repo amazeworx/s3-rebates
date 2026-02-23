@@ -7,6 +7,25 @@ import { ShopSection } from '@/components/ShopSection';
 import { Button } from '@/components/ui/button';
 
 import { Skeleton } from '@/components/ui/skeleton';
+import { VoteCounter } from '@/components/VoteCounter';
+
+// This is a server component, so it can make direct calls.
+// In a real app, you might use an ORM or direct database access here.
+// For this example, we'll hit our own API route.
+async function getInitialVotes() {
+  // Use absolute URL for server-side fetches.
+  // Make sure NEXT_PUBLIC_BASE_URL is set in your .env file
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const response = await fetch(`${baseUrl}/api/vote?voteKey=rebate-calculator`, {
+    cache: 'no-store', // Ensure fresh data on each request
+  });
+  if (!response.ok) {
+    console.error('Failed to fetch initial votes', response.status, response.statusText);
+    return { likes: 0, dislikes: 0 };
+  }
+  return response.json();
+}
+
 
 export default function Home() {
   const [buildingLevels, setBuildingLevels] = useLocalStorage<Record<string, number>>(
@@ -16,9 +35,19 @@ export default function Home() {
   const [cartItems, setCartItems] = useLocalStorage<Record<string, number>>('cartItems', {});
   const [totalEarned, setTotalEarned] = React.useState(0);
   const [mounted, setMounted] = React.useState(false);
+  const [initialVotes, setInitialVotes] = React.useState({ likes: 0, dislikes: 0 });
 
   React.useEffect(() => {
     setMounted(true);
+    // Fetch votes client-side after mount for hydration, and for when
+    // initial data might be stale or if SSR is not fully utilized.
+    // In a production App Router setup, initial data for client components
+    // would ideally be passed directly from a parent server component.
+    const fetchVotes = async () => {
+      const votes = await getInitialVotes();
+      setInitialVotes(votes);
+    };
+    fetchVotes();
   }, []);
 
   if (!mounted) {
@@ -32,7 +61,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <main className="container mx-auto max-w-xl px-4 py-8 pb-20">
+        <main className="container mx-auto max-w-xl px-4 py-8 pb-32">
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <Skeleton className="h-7 w-48 bg-slate-200" />
@@ -109,8 +138,12 @@ export default function Home() {
         />
       </main>
 
-      <footer className="pt-10 pb-32">
+      <footer className="pt-8 pb-32">
         <div className="container mx-auto space-y-4 px-4 text-center">
+          <div className="flex flex-col items-center justify-center mb-8">
+            <div className="text-sm mb-3 text-slate-500">Did you find this App useful?</div>
+            <VoteCounter initialLikes={initialVotes.likes} initialDislikes={initialVotes.dislikes} voteKey="rebate-calculator" />
+          </div>
           <div className="flex items-center justify-center text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">
             <span>Made with Love By</span>
             <span className="pb-2">
@@ -130,6 +163,7 @@ export default function Home() {
             </span>
             <span>ZWT #399</span>
           </div>
+
         </div>
       </footer>
     </div>

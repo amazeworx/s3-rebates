@@ -82,7 +82,20 @@ export function VoteCounter({ initialLikes, initialDislikes, voteKey }: VoteCoun
         variant="outline"
         size="sm"
         className={cn(
-          'flex items-center gap-1',
+          'flex items-center gap-1 bg-white',
+          userVote === 'dislike' && 'bg-destructive text-destructive-foreground hover:bg-destructive'
+        )}
+        onClick={() => handleVote('dislike')}
+        disabled={loading}
+      >
+        {dislikes.toLocaleString()}
+        <ThumbsDown className="h-4 w-4" />
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        className={cn(
+          'flex items-center gap-1 bg-white',
           userVote === 'like' && 'bg-primary text-primary-foreground hover:bg-primary'
         )}
         onClick={() => handleVote('like')}
@@ -90,19 +103,6 @@ export function VoteCounter({ initialLikes, initialDislikes, voteKey }: VoteCoun
       >
         <ThumbsUp className="h-4 w-4" />
         {likes.toLocaleString()}
-      </Button>
-      <Button
-        variant="outline"
-        size="sm"
-        className={cn(
-          'flex items-center gap-1',
-          userVote === 'dislike' && 'bg-destructive text-destructive-foreground hover:bg-destructive'
-        )}
-        onClick={() => handleVote('dislike')}
-        disabled={loading}
-      >
-        <ThumbsDown className="h-4 w-4" />
-        {dislikes.toLocaleString()}
       </Button>
     </div>
   );
