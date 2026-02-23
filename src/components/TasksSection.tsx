@@ -36,7 +36,7 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
   };
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
+    <div className="grid gap-6">
       {(tasksData as TaskCategory[]).map((category) => (
         <Card key={category.category} className="gap-4 py-4">
           <CardContent className="px-4">

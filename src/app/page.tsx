@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-3xl px-4 py-8">
+      <main className="container mx-auto max-w-xl px-4 py-8">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold">Season Building Progress</h2>

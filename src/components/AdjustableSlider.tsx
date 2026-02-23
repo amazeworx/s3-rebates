@@ -82,7 +82,7 @@ export function AdjustableSlider({
             type="number"
             value={value}
             onChange={handleInputChange}
-            className="border-border h-8 w-12 rounded bg-white text-center text-sm lg:w-20 lg:pr-1"
+            className="border-border h-8 w-12 rounded bg-white text-center text-sm md:w-14 md:pr-1"
           />
         </div>
       </div>
