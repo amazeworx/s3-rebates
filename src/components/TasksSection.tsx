@@ -13,6 +13,7 @@ interface Milestone {
 
 interface TaskCategory {
   category: string;
+  image: string;
   tiers: string[];
   milestones: Milestone[];
 }
@@ -39,7 +40,7 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
         <Card key={category.category} className='gap-4 py-4'>
           <CardContent className='px-4'>
             <div className="flex gap-4 items-end">
-              <div className="grow-0"><img src="https://placeholdit.com/100x100" alt="" className='rounded-xl w-20 h-20' /></div>
+              <div className="grow-0"><img src={category.image} alt={category.category} className='rounded-xl w-20 h-20' /></div>
               <div className="grow font-bold pb-4">{category.category}</div>
             </div>
             <div className="flex gap-4">

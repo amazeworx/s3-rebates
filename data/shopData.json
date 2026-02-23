@@ -2,6 +2,7 @@
   {
     "id": "dx-blueprint",
     "name": "DX-Blueprint",
+    "image": "https://placehold.co/100/orange/white?text=DX",
     "cost": 250,
     "maxExchange": 50,
     "qtyPerExchange": 1
@@ -9,6 +10,7 @@
   {
     "id": "precision-part",
     "name": "Precision Part",
+    "image": "https://placehold.co/100/grey/white?text=Part",
     "cost": 60,
     "maxExchange": 50,
     "qtyPerExchange": 4
@@ -16,14 +18,23 @@
   {
     "id": "orange-fragment",
     "name": "Orange Fragment",
+    "image": "https://placehold.co/100/orange/white?text=Frag",
     "cost": 50,
     "maxExchange": 50,
     "qtyPerExchange": 1
   },
-  { "id": "power-core", "name": "Power Core", "cost": 60, "maxExchange": 50, "qtyPerExchange": 4 },
+  {
+    "id": "power-core",
+    "name": "Power Core",
+    "image": "https://placehold.co/100/cyan/white?text=Core",
+    "cost": 60,
+    "maxExchange": 50,
+    "qtyPerExchange": 4
+  },
   {
     "id": "orange-book",
     "name": "Orange Book",
+    "image": "https://placehold.co/100/orange/white?text=Book",
     "cost": 90,
     "maxExchange": 50,
     "qtyPerExchange": 45
@@ -31,6 +42,7 @@
   {
     "id": "design-blueprint",
     "name": "Design Blueprint",
+    "image": "https://placehold.co/100/blue/white?text=Design",
     "cost": 50,
     "maxExchange": 50,
     "qtyPerExchange": 6
@@ -38,14 +50,23 @@
   {
     "id": "titanium-alloy",
     "name": "Titanium Alloy",
+    "image": "https://placehold.co/100/silver/black?text=Alloy",
     "cost": 45,
     "maxExchange": 50,
     "qtyPerExchange": 9
   },
-  { "id": "boost-ore", "name": "Boost Ore", "cost": 50, "maxExchange": 50, "qtyPerExchange": 1200 },
+  {
+    "id": "boost-ore",
+    "name": "Boost Ore",
+    "image": "https://placehold.co/100/purple/white?text=Ore",
+    "cost": 50,
+    "maxExchange": 50,
+    "qtyPerExchange": 1200
+  },
   {
     "id": "1h-construct",
     "name": "1H Construct Speedup",
+    "image": "https://placehold.co/100/yellow/black?text=Build",
     "cost": 100,
     "maxExchange": 200,
     "qtyPerExchange": 1
@@ -53,6 +74,7 @@
   {
     "id": "1h-research",
     "name": "1H Research Speedup",
+    "image": "https://placehold.co/100/blue/white?text=Lab",
     "cost": 100,
     "maxExchange": 200,
     "qtyPerExchange": 1
@@ -60,6 +82,7 @@
   {
     "id": "1h-training",
     "name": "1H Training Speedup",
+    "image": "https://placehold.co/100/red/white?text=Train",
     "cost": 100,
     "maxExchange": 200,
     "qtyPerExchange": 1

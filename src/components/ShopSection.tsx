@@ -10,6 +10,7 @@ import { calculateTotalSpent } from '@/lib/calculations';
 interface ShopItem {
   id: string;
   name: string;
+  image: string;
   cost: number;
   maxExchange: number;
   qtyPerExchange: number;
@@ -92,7 +93,7 @@ export function ShopSection({
               >
                 <div className="flex gap-3">
                   <div className="grow-0">
-                    <img src="https://placeholdit.com/56x56/dddddd/999999" alt="" className='rounded-xl w-14 h-14' />
+                    <img src={item.image} alt={item.name} className='rounded-xl w-14 h-14' />
                   </div>
                   <div className="grow">
                     <div className="flex items-start justify-between">
