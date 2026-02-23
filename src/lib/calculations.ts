@@ -1,5 +1,5 @@
-import tasksData from "../../data/tasksData.json";
-import shopData from "../../data/shopData.json";
+import tasksData from '../../data/tasksData.json';
+import shopData from '../../data/shopData.json';
 
 interface Milestone {
   level: number;
@@ -23,7 +23,7 @@ export function calculateTotalEarned(levels: Record<string, number>): number {
     category.tiers.forEach((tier) => {
       const key = `${category.category}-${tier}`;
       const level = levels[key] || 0;
-      
+
       category.milestones.forEach((milestone) => {
         if (level >= milestone.level) {
           total += milestone.reward;

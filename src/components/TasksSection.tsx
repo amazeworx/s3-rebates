@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from "react";
-import tasksData from "../../data/tasksData.json";
-import { AdjustableSlider } from "./AdjustableSlider";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { calculateTotalEarned } from "@/lib/calculations";
+import * as React from 'react';
+import tasksData from '../../data/tasksData.json';
+import { AdjustableSlider } from './AdjustableSlider';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { calculateTotalEarned } from '@/lib/calculations';
 
 interface Milestone {
   level: number;
@@ -36,46 +36,51 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
       {(tasksData as TaskCategory[]).map((category) => (
-        <Card key={category.category} className="bg-white border-slate-200 text-slate-900 shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-lg font-bold uppercase tracking-wider text-amber-600">
-              {category.category}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-6">
-            {category.tiers.map((tier) => {
-              const key = `${category.category}-${tier}`;
-              const currentLevel = levels[key] || 0;
-              const maxLevel = Math.max(...category.milestones.map((m) => m.level));
-              
-              // Find next reward
-              const nextMilestone = category.milestones.find(m => m.level > currentLevel);
-              const earnedInTier = category.milestones
-                .filter(m => currentLevel >= m.level)
-                .reduce((sum, m) => sum + m.reward, 0);
+        <Card key={category.category} className='gap-4 py-4'>
+          <CardContent className='px-4'>
+            <div className="flex gap-4 items-end">
+              <div className="grow-0"><img src="https://placeholdit.com/100x100" alt="" className='rounded-xl w-20 h-20' /></div>
+              <div className="grow font-bold pb-4">{category.category}</div>
+            </div>
+            <div className="flex gap-4">
+              <div className="grow grid gap-4 pt-4">
+                {category.tiers.map((tier) => {
+                  const key = `${category.category}-${tier}`;
+                  const currentLevel = levels[key] || 0;
+                  const maxLevel = Math.max(...category.milestones.map((m) => m.level));
 
-              return (
-                <div key={key} className="space-y-2">
-                  <div className="flex justify-between items-end text-sm">
-                    <span className="font-semibold text-slate-700">Tier {tier}</span>
-                    <span className="text-amber-600 font-mono font-bold">
-                      {earnedInTier} Medals
-                    </span>
-                  </div>
-                  <AdjustableSlider
-                    min={0}
-                    max={maxLevel}
-                    value={currentLevel}
-                    onChange={(val) => handleLevelChange(key, val)}
-                  />
-                  {nextMilestone && (
-                    <div className="text-[10px] text-slate-500 text-right font-medium">
-                      Next Reward: {nextMilestone.reward} at Level {nextMilestone.level}
+                  // Find next reward
+                  const nextMilestone = category.milestones.find((m) => m.level > currentLevel);
+                  const earnedInTier = category.milestones
+                    .filter((m) => currentLevel >= m.level)
+                    .reduce((sum, m) => sum + m.reward, 0);
+
+                  return (
+                    <div key={key} className="flex gap-4 border-b border-border/20 pb-4 last:border-b-0 last:pb-0">
+                      <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary p-1 font-mono font-semibold text-[10px] text-white">
+                        {tier}
+                      </div>
+                      <div className="grow space-y-1">
+                        <AdjustableSlider
+                          min={0}
+                          max={maxLevel}
+                          value={currentLevel}
+                          onChange={(val) => handleLevelChange(key, val)}
+                        />
+                        <div className="flex justify-between items-center">
+                          <div className="text-xs font-semibold">{earnedInTier} Medals</div>
+                          {nextMilestone && (
+                            <div className="text-right text-[10px] font-medium text-slate-500">
+                              Next Reward: {nextMilestone.reward} at Level {nextMilestone.level}
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
           </CardContent>
         </Card>
       ))}

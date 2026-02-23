@@ -1,7 +1,7 @@
 [
   {
     "category": "Thermal Lab",
-    "tiers": ["I"], 
+    "tiers": ["I"],
     "milestones": [
       { "level": 10, "reward": 500 },
       { "level": 15, "reward": 500 },

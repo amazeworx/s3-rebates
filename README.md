@@ -21,11 +21,13 @@ A professional Next.js (App Router) application designed to calculate "Season Bu
 ## Getting Started
 
 1.  **Install dependencies**:
+
     ```bash
     npm install
     ```
 
 2.  **Run the development server**:
+
     ```bash
     npm run dev
     ```
@@ -47,6 +49,7 @@ A professional Next.js (App Router) application designed to calculate "Season Bu
 ## Testing
 
 Verify calculation logic with the test suite:
+
 ```bash
 npm test
 ```

@@ -1,13 +1,67 @@
 [
-  { "id": "dx-blueprint", "name": "DX-Blueprint", "cost": 250, "maxExchange": 50, "qtyPerExchange": 1 },
-  { "id": "precision-part", "name": "Precision Part", "cost": 60, "maxExchange": 50, "qtyPerExchange": 4 },
-  { "id": "orange-fragment", "name": "Orange Fragment", "cost": 50, "maxExchange": 50, "qtyPerExchange": 1 },
+  {
+    "id": "dx-blueprint",
+    "name": "DX-Blueprint",
+    "cost": 250,
+    "maxExchange": 50,
+    "qtyPerExchange": 1
+  },
+  {
+    "id": "precision-part",
+    "name": "Precision Part",
+    "cost": 60,
+    "maxExchange": 50,
+    "qtyPerExchange": 4
+  },
+  {
+    "id": "orange-fragment",
+    "name": "Orange Fragment",
+    "cost": 50,
+    "maxExchange": 50,
+    "qtyPerExchange": 1
+  },
   { "id": "power-core", "name": "Power Core", "cost": 60, "maxExchange": 50, "qtyPerExchange": 4 },
-  { "id": "orange-book", "name": "Orange Book", "cost": 90, "maxExchange": 50, "qtyPerExchange": 45 },
-  { "id": "design-blueprint", "name": "Design Blueprint", "cost": 50, "maxExchange": 50, "qtyPerExchange": 6 },
-  { "id": "titanium-alloy", "name": "Titanium Alloy", "cost": 45, "maxExchange": 50, "qtyPerExchange": 9 },
+  {
+    "id": "orange-book",
+    "name": "Orange Book",
+    "cost": 90,
+    "maxExchange": 50,
+    "qtyPerExchange": 45
+  },
+  {
+    "id": "design-blueprint",
+    "name": "Design Blueprint",
+    "cost": 50,
+    "maxExchange": 50,
+    "qtyPerExchange": 6
+  },
+  {
+    "id": "titanium-alloy",
+    "name": "Titanium Alloy",
+    "cost": 45,
+    "maxExchange": 50,
+    "qtyPerExchange": 9
+  },
   { "id": "boost-ore", "name": "Boost Ore", "cost": 50, "maxExchange": 50, "qtyPerExchange": 1200 },
-  { "id": "1h-construct", "name": "1H Construct Speedup", "cost": 100, "maxExchange": 200, "qtyPerExchange": 1 },
-  { "id": "1h-research", "name": "1H Research Speedup", "cost": 100, "maxExchange": 200, "qtyPerExchange": 1 },
-  { "id": "1h-training", "name": "1H Training Speedup", "cost": 100, "maxExchange": 200, "qtyPerExchange": 1 }
+  {
+    "id": "1h-construct",
+    "name": "1H Construct Speedup",
+    "cost": 100,
+    "maxExchange": 200,
+    "qtyPerExchange": 1
+  },
+  {
+    "id": "1h-research",
+    "name": "1H Research Speedup",
+    "cost": 100,
+    "maxExchange": 200,
+    "qtyPerExchange": 1
+  },
+  {
+    "id": "1h-training",
+    "name": "1H Training Speedup",
+    "cost": 100,
+    "maxExchange": 200,
+    "qtyPerExchange": 1
+  }
 ]

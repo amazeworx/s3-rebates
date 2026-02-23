@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from "react";
-import { Minus, Plus } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import * as React from 'react';
+import { Minus, Plus } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface AdjustableSliderProps {
   min: number;
@@ -47,40 +47,44 @@ export function AdjustableSlider({
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex w-full flex-col gap-4">
       <div className="flex items-center gap-2">
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8 shrink-0"
-          onClick={handleDecrement}
-          disabled={value <= min}
-        >
-          <Minus className="h-4 w-4" />
-        </Button>
-        <Slider
-          value={[value]}
-          min={min}
-          max={max}
-          step={step}
-          onValueChange={handleSliderChange}
-          className="flex-grow"
-        />
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8 shrink-0"
-          onClick={handleIncrement}
-          disabled={value >= max || disabledPlus}
-        >
-          <Plus className="h-4 w-4" />
-        </Button>
-        <Input
-          type="number"
-          value={value}
-          onChange={handleInputChange}
-          className="w-16 h-8 text-center"
-        />
+        <div className='grow flex items-center gap-2'>
+          <Button
+            variant="outline"
+            size="icon"
+            className="hover:border-border/50 h-6 w-6 shrink-0 cursor-pointer rounded-lg bg-white disabled:cursor-not-allowed"
+            onClick={handleDecrement}
+            disabled={value <= min}
+          >
+            <Minus className="h-4 w-4" />
+          </Button>
+          <Slider
+            value={[value]}
+            min={min}
+            max={max}
+            step={step}
+            onValueChange={handleSliderChange}
+            className="grow"
+          />
+          <Button
+            variant="outline"
+            size="icon"
+            className="hover:border-border/50 h-6 w-6 shrink-0 cursor-pointer rounded-lg bg-white disabled:cursor-not-allowed"
+            onClick={handleIncrement}
+            disabled={value >= max || disabledPlus}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
+        <div className="grow-0">
+          <Input
+            type="number"
+            value={value}
+            onChange={handleInputChange}
+            className="border-border h-8 w-12 rounded bg-white text-sm text-center lg:pr-1 lg:w-20"
+          />
+        </div>
       </div>
     </div>
   );
