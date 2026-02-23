@@ -68,10 +68,10 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
                           onChange={(val) => handleLevelChange(key, val)}
                         />
                         <div className="flex justify-between items-center">
-                          <div className="text-xs font-semibold">{earnedInTier} Medals</div>
+                          <div className="text-xs font-semibold">{earnedInTier.toLocaleString()} Medals</div>
                           {nextMilestone && (
                             <div className="text-right text-[10px] font-medium text-slate-500">
-                              Next Reward: {nextMilestone.reward} at Level {nextMilestone.level}
+                              Next Reward: {nextMilestone.reward.toLocaleString()} at Level {nextMilestone.level}
                             </div>
                           )}
                         </div>

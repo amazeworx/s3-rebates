@@ -65,14 +65,14 @@ export function ShopSection({
               <span
                 className={`text-xl font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
               >
-                {remainingBalance} / {totalEarned}
+                {remainingBalance.toLocaleString()} / {totalEarned.toLocaleString()}
               </span>
             </div>
             <div className="text-right">
               <span className="block text-[10px] font-bold tracking-widest text-slate-500 uppercase">
                 Total Spent
               </span>
-              <span className="text-xl font-bold text-slate-700">{totalSpent}</span>
+              <span className="text-xl font-bold text-slate-700">{totalSpent.toLocaleString()}</span>
             </div>
           </div>
         </CardContent>
@@ -101,14 +101,14 @@ export function ShopSection({
                           <h3 className="text-sm font-bold text-slate-800">
                             {item.name}
                           </h3>
-                          <Badge>{currentQty * item.qtyPerExchange}</Badge>
+                          <Badge>{(currentQty * item.qtyPerExchange).toLocaleString()}</Badge>
                         </div>
                       </div>
-                      <div className="font-bold text-primary">{currentQty * item.cost}</div>
+                      <div className="font-bold text-primary">{(currentQty * item.cost).toLocaleString()}</div>
                     </div>
                     <div className="mt-1.5">
                       <div className="flex justify-between text-[10px] font-medium text-slate-500 mb-1.5">
-                        <span>{item.qtyPerExchange}x | Cost: {item.cost} | Max Limit: {item.maxExchange}</span>
+                        <span>{item.qtyPerExchange}x | Cost: {item.cost.toLocaleString()} | Max Limit: {item.maxExchange}</span>
                         {isMaxed && <span className="font-black text-green-600">MAXED</span>}
                       </div>
                       <AdjustableSlider
