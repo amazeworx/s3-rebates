@@ -37,14 +37,20 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
       {(tasksData as TaskCategory[]).map((category) => (
-        <Card key={category.category} className='gap-4 py-4'>
-          <CardContent className='px-4'>
-            <div className="flex gap-4 items-end">
-              <div className="grow-0"><img src={category.image} alt={category.category} className='rounded-xl w-20 h-20' /></div>
-              <div className="grow font-bold pb-4">{category.category}</div>
+        <Card key={category.category} className="gap-4 py-4">
+          <CardContent className="px-4">
+            <div className="flex items-end gap-4">
+              <div className="grow-0">
+                <img
+                  src={category.image}
+                  alt={category.category}
+                  className="h-20 w-20 rounded-xl"
+                />
+              </div>
+              <div className="grow pb-4 font-bold">{category.category}</div>
             </div>
             <div className="flex gap-4">
-              <div className="grow grid gap-4 pt-4">
+              <div className="grid grow gap-4 pt-4">
                 {category.tiers.map((tier) => {
                   const key = `${category.category}-${tier}`;
                   const currentLevel = levels[key] || 0;
@@ -57,8 +63,11 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
                     .reduce((sum, m) => sum + m.reward, 0);
 
                   return (
-                    <div key={key} className="flex gap-4 border-b border-border/20 pb-4 last:border-b-0 last:pb-0">
-                      <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary p-1 font-mono font-semibold text-[10px] text-white">
+                    <div
+                      key={key}
+                      className="border-border/20 flex gap-4 border-b pb-4 last:border-b-0 last:pb-0"
+                    >
+                      <div className="bg-primary inline-flex h-8 w-8 items-center justify-center rounded-full p-1 font-mono text-[10px] font-semibold text-white">
                         {tier}
                       </div>
                       <div className="grow space-y-1">
@@ -68,11 +77,14 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
                           value={currentLevel}
                           onChange={(val) => handleLevelChange(key, val)}
                         />
-                        <div className="flex justify-between items-center">
-                          <div className="text-xs font-semibold">{earnedInTier.toLocaleString()} Medals</div>
+                        <div className="flex items-center justify-between">
+                          <div className="text-xs font-semibold">
+                            {earnedInTier.toLocaleString()} Medals
+                          </div>
                           {nextMilestone && (
                             <div className="text-right text-[10px] font-medium text-slate-500">
-                              Next Reward: {nextMilestone.reward.toLocaleString()} at Level {nextMilestone.level}
+                              Next Reward: {nextMilestone.reward.toLocaleString()} at Level{' '}
+                              {nextMilestone.level}
                             </div>
                           )}
                         </div>

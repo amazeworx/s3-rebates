@@ -49,7 +49,7 @@ export function AdjustableSlider({
   return (
     <div className="flex w-full flex-col gap-4">
       <div className="flex items-center gap-2">
-        <div className='grow flex items-center gap-2'>
+        <div className="flex grow items-center gap-2">
           <Button
             variant="outline"
             size="icon"
@@ -82,7 +82,7 @@ export function AdjustableSlider({
             type="number"
             value={value}
             onChange={handleInputChange}
-            className="border-border h-8 w-12 rounded bg-white text-sm text-center lg:pr-1 lg:w-20"
+            className="border-border h-8 w-12 rounded bg-white text-center text-sm lg:w-20 lg:pr-1"
           />
         </div>
       </div>
