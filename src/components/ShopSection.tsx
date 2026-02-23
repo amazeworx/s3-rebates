@@ -17,7 +17,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { calculateTotalSpent } from '@/lib/calculations';
-import { ChevronUp, Trash2 } from 'lucide-react';
+import { ChevronUp, Trash2, X, RotateCcw } from 'lucide-react';
 
 interface ShopItem {
   id: string;
@@ -69,7 +69,8 @@ export function ShopSection({
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <div className="fixed right-0 bottom-0 left-0 z-50 cursor-pointer border-t border-slate-200 bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] transition-colors hover:bg-slate-50">
+        <div className="fixed right-0 bottom-0 left-0 z-50 cursor-pointer rounded-t-2xl bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors hover:bg-slate-50">
+          <div className="bg-muted/50 mx-auto h-1 w-[100px] shrink-0 rounded-full -mt-1 mb-4"></div>
           <div className="container mx-auto flex max-w-5xl items-center justify-between">
             <div className="flex flex-col">
               <span className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
@@ -92,26 +93,25 @@ export function ShopSection({
           </div>
         </div>
       </DrawerTrigger>
-      <DrawerContent className="max-h-[85vh]">
+      <DrawerContent className="data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:border-0 data-[vaul-drawer-direction=bottom]:rounded-t-2xl data-[vaul-drawer-direction=bottom]:max-h-[85vh] bg-white">
         <div className="mx-auto w-full max-w-5xl">
-          <DrawerHeader className="flex items-center justify-between border-b border-slate-100 pb-4">
-            <div className="text-left">
-              <DrawerTitle>Exchange Shop</DrawerTitle>
-              <DrawerDescription>Select items to exchange with your medals.</DrawerDescription>
-            </div>
-            <div className="text-right">
-              <span
-                className={`font-mono text-lg font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
-              >
-                {remainingBalance.toLocaleString()}
-              </span>
-              <span className="block text-xs font-bold tracking-wider text-slate-500 uppercase">
-                Available
-              </span>
+          <DrawerHeader className="border-b border-border/30 pb-4">
+            <div className="flex justify-between">
+              <div className="">
+                <DrawerTitle className='text-left'>Exchange Shop</DrawerTitle>
+                <DrawerDescription className='text-left'>Select items to exchange with your medals.</DrawerDescription>
+              </div>
+              <div className='grow-0'>
+                <DrawerClose asChild>
+                  <Button variant="outline" size="icon" className="rounded-full size-8">
+                    <X />
+                  </Button>
+                </DrawerClose>
+              </div>
             </div>
           </DrawerHeader>
-          <div className="h-[calc(100vh-14rem)] overflow-y-auto p-4">
-            <div className="space-y-6">
+          <div className="h-[calc(100vh-20rem)] overflow-y-auto bg-card">
+            <div className="space-y-4">
               {(shopData as ShopItem[]).map((item) => {
                 const currentQty = cartItems[item.id] || 0;
                 const canAffordOneMore = remainingBalance >= item.cost;
@@ -120,9 +120,9 @@ export function ShopSection({
                 return (
                   <div
                     key={item.id}
-                    className="border-b border-slate-200 pb-6 last:border-b-0 last:pb-0"
+                    className="border-b border-border/20 py-4 px-4 last:border-b-0"
                   >
-                    <div className="flex gap-4">
+                    <div className="flex gap-3">
                       <div className="shrink-0 grow-0">
                         <img
                           src={item.image}
@@ -137,11 +137,10 @@ export function ShopSection({
                               <h3 className="truncate text-sm font-bold text-slate-900">
                                 {item.name}
                               </h3>
-                              {currentQty * item.qtyPerExchange > 0 && (
-                                <Badge variant="secondary" className="font-mono text-[10px]">
-                                  +{(currentQty * item.qtyPerExchange).toLocaleString()}
-                                </Badge>
-                              )}
+
+                              <Badge variant="secondary" className="text-[11px]">
+                                +{(currentQty * item.qtyPerExchange).toLocaleString()}
+                              </Badge>
                             </div>
                             <div className="mt-1 flex flex-wrap gap-x-3 text-[10px] font-medium text-slate-500">
                               <span>{item.qtyPerExchange}x per unit</span>
@@ -149,20 +148,15 @@ export function ShopSection({
                               <span>Limit: {item.maxExchange}</span>
                             </div>
                           </div>
-                          <div className="ml-2 shrink-0 text-right font-bold text-slate-900">
+                          <div className="ml-2 shrink-0 text-right text-sm pt-1 font-bold text-slate-900">
                             {(currentQty * item.cost).toLocaleString()}
-                            <span className="block text-[10px] font-normal text-slate-400 uppercase">
+                            <span className="block text-[10px] font-normal text-slate-500 uppercase">
                               Spent
                             </span>
                           </div>
                         </div>
 
                         <div className="pt-1">
-                          {isMaxed && (
-                            <div className="mb-1 text-[10px] font-black tracking-widest text-green-600 uppercase">
-                              Maxed Out
-                            </div>
-                          )}
                           <AdjustableSlider
                             min={0}
                             max={item.maxExchange}
@@ -179,21 +173,29 @@ export function ShopSection({
             </div>
           </div>
           <DrawerFooter className="border-t border-slate-100 pt-4">
-            <div className="flex w-full gap-2">
-              <Button
-                variant="destructive"
-                className="flex-1"
-                onClick={() => setCartItems({})}
-                disabled={totalSpent === 0}
-              >
-                <Trash2 className="mr-2 h-4 w-4" />
-                Clear Cart
-              </Button>
-              <DrawerClose asChild>
-                <Button variant="outline" className="flex-1">
-                  Close
+            <div className="flex w-full gap-2 justify-between items-center">
+              <div>
+                <span
+                  className={`text-lg font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
+                >
+                  {remainingBalance.toLocaleString()}
+                </span>
+                <span className="block text-xs font-bold tracking-wider text-slate-500 uppercase">
+                  Available
+                </span>
+              </div>
+              <div className="flex gap-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1"
+                  onClick={() => setCartItems({})}
+                  disabled={totalSpent === 0}
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  Clear
                 </Button>
-              </DrawerClose>
+              </div>
             </div>
           </DrawerFooter>
         </div>

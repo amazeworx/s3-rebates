@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-3xl px-4 py-8 pb-32">
+      <main className="container mx-auto max-w-3xl px-4 py-8">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold">Season Building Progress</h2>
@@ -68,11 +68,11 @@ export default function Home() {
           totalEarned={totalEarned}
           cartItems={cartItems}
           setCartItems={setCartItems}
-          onTotalSpentChange={() => {}}
+          onTotalSpentChange={() => { }}
         />
       </main>
 
-      <footer className="py-12">
+      <footer className="pt-10 pb-32">
         <div className="container mx-auto space-y-4 px-4 text-center">
           <div className="flex items-center justify-center text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">
             <span>Made with Love</span>
