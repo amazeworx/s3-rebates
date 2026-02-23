@@ -140,7 +140,7 @@ export default function Home() {
 
       <footer className="pt-8 pb-32">
         <div className="container mx-auto space-y-4 px-4 text-center">
-          <div className="flex flex-col items-center justify-center mb-8">
+          <div className="flex flex-col items-center justify-center mb-8 hidden">
             <div className="text-sm mb-3 text-slate-500">Did you find this App useful?</div>
             <VoteCounter initialLikes={initialVotes.likes} initialDislikes={initialVotes.dislikes} voteKey="rebate-calculator" />
           </div>
