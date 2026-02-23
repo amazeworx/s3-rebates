@@ -6,6 +6,8 @@ import { TasksSection } from '@/components/TasksSection';
 import { ShopSection } from '@/components/ShopSection';
 import { Button } from '@/components/ui/button';
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 export default function Home() {
   const [buildingLevels, setBuildingLevels] = useLocalStorage<Record<string, number>>(
     'buildingLevels',
@@ -21,10 +23,45 @@ export default function Home() {
 
   if (!mounted) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50">
-        <div className="animate-pulse font-mono tracking-[0.2em] text-amber-600 uppercase">
-          Initializing System...
-        </div>
+      <div className="bg-background min-h-screen font-sans">
+        <header className="border-border/30 bg-card z-20 border-b backdrop-blur-sm xl:sticky xl:top-0">
+          <div className="container mx-auto max-w-xl flex h-16 items-center justify-between px-4">
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-8 w-8 rounded bg-slate-200" />
+              <Skeleton className="h-6 w-32 bg-slate-200" />
+            </div>
+          </div>
+        </header>
+        <main className="container mx-auto max-w-xl px-4 py-8 pb-32">
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-7 w-48 bg-slate-200" />
+              <Skeleton className="h-6 w-16 bg-slate-200" />
+            </div>
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-white">
+                <Skeleton className="h-20 w-20 rounded-xl bg-slate-200" />
+                <div className="space-y-2 grow pt-2">
+                  <Skeleton className="h-4 w-3/4 bg-slate-200" />
+                  <Skeleton className="h-3 w-1/2 bg-slate-200" />
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Skeleton for fixed bottom bar */}
+          <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-slate-200">
+            <div className="container mx-auto max-w-5xl flex items-center justify-between">
+              <div className="space-y-1">
+                <Skeleton className="h-3 w-24 bg-slate-200" />
+                <Skeleton className="h-6 w-32 bg-slate-200" />
+              </div>
+              <div className="space-y-1 text-right">
+                <Skeleton className="h-3 w-20 ml-auto bg-slate-200" />
+                <Skeleton className="h-6 w-16 ml-auto bg-slate-200" />
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
@@ -32,7 +69,7 @@ export default function Home() {
   return (
     <div className="bg-background min-h-screen font-sans">
       <header className="border-border/30 bg-card z-20 border-b backdrop-blur-sm xl:sticky xl:top-0">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <div className="container mx-auto max-w-xl flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <div className="bg-primary flex h-8 items-center justify-center rounded px-2 font-bold text-white">
               S3

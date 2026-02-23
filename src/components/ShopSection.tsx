@@ -69,32 +69,34 @@ export function ShopSection({
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <div className="fixed right-0 bottom-0 left-0 z-50 cursor-pointer rounded-t-2xl bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors hover:bg-slate-50">
-          <div className="bg-muted/50 mx-auto h-1 w-[100px] shrink-0 rounded-full -mt-1 mb-4"></div>
-          <div className="container mx-auto flex max-w-5xl items-center justify-between">
-            <div className="flex flex-col">
-              <span className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                Remaining Balance <ChevronUp className="h-3 w-3" />
-              </span>
-              <span
-                className={`text-xl font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
-              >
-                {remainingBalance.toLocaleString()} / {totalEarned.toLocaleString()}
-              </span>
-            </div>
-            <div className="text-right">
-              <span className="block text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                Total Spent
-              </span>
-              <span className="text-xl font-bold text-slate-700">
-                {totalSpent.toLocaleString()}
-              </span>
+        <div className="fixed right-0 bottom-0 left-0 z-50">
+          <div className="container mx-auto max-w-xl cursor-pointer rounded-t-2xl bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors hover:bg-slate-50">
+            <div className="bg-muted/50 mx-auto h-1 w-[100px] shrink-0 rounded-full -mt-1 mb-4"></div>
+            <div className="container mx-auto flex max-w-xl items-center justify-between">
+              <div className="flex flex-col">
+                <span className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
+                  Remaining Balance <ChevronUp className="h-3 w-3" />
+                </span>
+                <span
+                  className={`text-xl font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
+                >
+                  {remainingBalance.toLocaleString()} / {totalEarned.toLocaleString()}
+                </span>
+              </div>
+              <div className="text-right">
+                <span className="block text-[10px] font-bold tracking-widest text-slate-500 uppercase">
+                  Total Spent
+                </span>
+                <span className="text-xl font-bold text-slate-700">
+                  {totalSpent.toLocaleString()}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </DrawerTrigger>
-      <DrawerContent className="data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:border-0 data-[vaul-drawer-direction=bottom]:rounded-t-2xl data-[vaul-drawer-direction=bottom]:max-h-[85vh] bg-white">
-        <div className="mx-auto w-full max-w-5xl">
+      <DrawerContent className="data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:border-0 data-[vaul-drawer-direction=bottom]:rounded-t-2xl data-[vaul-drawer-direction=bottom]:max-h-[85vh] bg-white max-w-xl mx-auto">
+        <div className="mx-auto w-full max-w-xl">
           <DrawerHeader className="border-b border-border/30 pb-4">
             <div className="flex justify-between">
               <div className="">
