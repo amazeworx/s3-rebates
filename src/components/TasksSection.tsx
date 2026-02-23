@@ -16,6 +16,7 @@ interface TaskCategory {
   image: string;
   tiers: string[];
   milestones: Milestone[];
+  maxLevel?: number;
 }
 
 interface TasksSectionProps {
@@ -54,7 +55,7 @@ export function TasksSection({ levels, setLevels, onTotalEarnedChange }: TasksSe
                 {category.tiers.map((tier) => {
                   const key = `${category.category}-${tier}`;
                   const currentLevel = levels[key] || 0;
-                  const maxLevel = Math.max(...category.milestones.map((m) => m.level));
+                  const maxLevel = category.maxLevel ?? Math.max(...category.milestones.map((m) => m.level));
 
                   // Find next reward
                   const nextMilestone = category.milestones.find((m) => m.level > currentLevel);

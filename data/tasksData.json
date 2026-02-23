@@ -2,6 +2,7 @@
   {
     "category": "Thermal Lab",
     "image": "/s3-thermal-lab.jpg",
+    "maxLevel": 35,
     "tiers": ["I"],
     "milestones": [
       { "level": 10, "reward": 500 },
