@@ -15,10 +15,10 @@ const fontMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'S3 Rebate Calculator - Dark War Survival',
+  title: 'DWS Season 3 Building Rebates Calculator',
   description: 'Calculate your Season 3 Building Rebates and plan your medal exchange efficiently. Maximize your rewards with our easy-to-use calculator.',
   openGraph: {
-    title: 'S3 Rebate Calculator - Maximize Your Rewards',
+    title: 'DWS Season 3 Building Rebates Calculator',
     description: 'Plan your building upgrades and optimize your medal spending for Season 3.',
     type: 'website',
   },
