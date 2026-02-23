@@ -8,10 +8,26 @@ import { Button } from '@/components/ui/button';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { VoteCounter } from '@/components/VoteCounter';
+import { VoteCounter } from '@/components/VoteCounter';
 
 // This is a server component, so it can make direct calls.
 // In a real app, you might use an ORM or direct database access here.
 // For this example, we'll hit our own API route.
+async function getInitialVotes() {
+  // Use absolute URL for server-side fetches.
+  // Make sure NEXT_PUBLIC_BASE_URL is set in your .env file
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const response = await fetch(`${baseUrl}/api/vote?voteKey=rebate-calculator`, {
+    cache: 'no-store', // Ensure fresh data on each request
+  });
+  if (!response.ok) {
+    console.error('Failed to fetch initial votes', response.status, response.statusText);
+    return { likes: 0, dislikes: 0 };
+  }
+  return response.json();
+}
+
+
 async function getInitialVotes() {
   // Use absolute URL for server-side fetches.
   // Make sure NEXT_PUBLIC_BASE_URL is set in your .env file
@@ -61,7 +77,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <main className="container mx-auto max-w-xl px-4 py-8 pb-32">
+        <main className="container mx-auto max-w-xl px-4 py-8 pb-20">
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <Skeleton className="h-7 w-48 bg-slate-200" />
