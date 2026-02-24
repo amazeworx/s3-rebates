@@ -104,7 +104,7 @@ export default function Home() {
               S3
             </div>
             <h1 className="text-xl font-black text-slate-900 uppercase">
-              Rebate <span className="text-primary">Calculator</span>
+              Rebates <span className="text-primary">Calculator</span>
             </h1>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function Home() {
       <main className="container mx-auto max-w-xl px-4 py-8">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold">Season Building Progress</h2>
+            <h2 className="text-xl font-bold">Season Buildings Progress</h2>
             <Button
               variant="outline"
               size="xs"
@@ -140,7 +140,7 @@ export default function Home() {
 
       <footer className="pt-8 pb-32">
         <div className="container mx-auto space-y-4 px-4 text-center">
-          <div className="flex flex-col items-center justify-center mb-8 hidden">
+          <div className="flex-col items-center justify-center mb-8 hidden">
             <div className="text-sm mb-3 text-slate-500">Did you find this App useful?</div>
             <VoteCounter initialLikes={initialVotes.likes} initialDislikes={initialVotes.dislikes} voteKey="rebate-calculator" />
           </div>

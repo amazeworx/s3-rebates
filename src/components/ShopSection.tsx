@@ -75,7 +75,7 @@ export function ShopSection({
             <div className="container mx-auto flex max-w-xl items-center justify-between">
               <div className="flex flex-col">
                 <span className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                  Remaining Balance <ChevronUp className="h-3 w-3" />
+                  Remaining Medals <ChevronUp className="h-3 w-3" />
                 </span>
                 <span
                   className={`text-xl font-bold ${remainingBalance < 0 ? 'text-red-600' : 'text-primary'}`}
@@ -85,7 +85,7 @@ export function ShopSection({
               </div>
               <div className="text-right">
                 <span className="block text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                  Total Spent
+                  Medals Spent
                 </span>
                 <span className="text-xl font-bold text-slate-700">
                   {totalSpent.toLocaleString()}
@@ -153,7 +153,7 @@ export function ShopSection({
                           <div className="ml-2 shrink-0 text-right text-sm pt-1 font-bold text-slate-900">
                             {(currentQty * item.cost).toLocaleString()}
                             <span className="block text-[10px] font-normal text-slate-500 uppercase">
-                              Spent
+                              Medals
                             </span>
                           </div>
                         </div>
@@ -182,8 +182,8 @@ export function ShopSection({
                 >
                   {remainingBalance.toLocaleString()}
                 </span>
-                <span className="block text-xs font-bold tracking-wider text-slate-500 uppercase">
-                  Available
+                <span className="block text-[11px] font-bold tracking-wider text-slate-400 uppercase">
+                  Medals Available
                 </span>
               </div>
               <div className="flex gap-1">
